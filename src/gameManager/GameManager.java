@@ -45,14 +45,29 @@ public class GameManager {
     }
 
     private boolean areaCheck(Box a_box, Box b_box) {
-        for(int i = 0; i < 4; i++){
-            if(b_box.coords[i].x >= a_box.coords[0].x && 
-                b_box.coords[i].x <= a_box.coords[3].x &&
-                  b_box.coords[i].y >= a_box.coords[0].y && 
-                    b_box.coords[i].y <= a_box.coords[3].y){
-                return true;
-            }
+        //r1 -> l4 //r1 -> l3 //r2 -> l4 //r2 -> l3
+        float t  = (b_box.coords[1].x - a_box.coords[0].x)/a_box.getWidth();
+        float t1 = (b_box.coords[0].x - a_box.coords[0].x)/a_box.getWidth();
+        float t2 = (a_box.coords[0].y - b_box.coords[0].y)/b_box.getHeight();
+        float t3 = (a_box.coords[2].y - b_box.coords[0].y)/b_box.getHeight();
+        if(   0 <= t  && t  <= 1
+           || 0 <= t1 && t1 <= 1
+           || 0 <= t2 && t3 <= 1
+           || 0 <= t3 && t3 <= 1){
+           return true; 
         }
+        //r3 -> l1 //r3 -> l2 //r4 -> l1 //r4 -> l2
+        t  = (b_box.coords[0].y - a_box.coords[0].y)/a_box.getHeight();
+        t1 = (b_box.coords[2].y - a_box.coords[0].y)/a_box.getHeight();
+        t2 = (a_box.coords[0].x - b_box.coords[0].x)/b_box.getWidth();
+        t3 = (a_box.coords[1].x - b_box.coords[0].x)/b_box.getWidth();
+        if(   0 <= t  && t  <= 1
+           || 0 <= t1 && t1 <= 1
+           || 0 <= t2 && t3 <= 1
+           || 0 <= t3 && t3 <= 1){
+           return true; 
+        }
+        
         return false;
     }
 

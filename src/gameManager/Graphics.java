@@ -1,5 +1,5 @@
 package gameManager;
-import java.io.IOException;
+//import java.io.IOException;
 
 public class Graphics {
     private String buffer;
