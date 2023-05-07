@@ -10,7 +10,7 @@ public class Box {
     }
     
     public Point[] coords;
-
+    
     public Box(int x, int y, int width, int height){
         coords = new Point[4];
         

@@ -44,14 +44,22 @@ public class GameManager {
     }
 
     private boolean areaCheck(Box a_box, Box b_box) {
-        for (int i = 0; i < 4; i++) {
-            if (b_box.coords[i].x >= a_box.coords[0].x
-                    && b_box.coords[i].x <= a_box.coords[3].x
-                    && b_box.coords[i].y >= a_box.coords[0].y
-                    && b_box.coords[i].y <= a_box.coords[3].y) {
+        int a_izq = a_box.coords[0].x;
+        int a_der = a_box.coords[1].x;
+        int a_top = a_box.coords[0].y;
+        int a_bot = a_box.coords[1].y;
+
+        int b_izq = b_box.coords[0].x;
+        int b_der = b_box.coords[1].x;
+        int b_top = b_box.coords[0].y;
+        int b_bot = b_box.coords[1].y;
+
+        if(    b_der > a_izq
+            && a_der > b_izq
+            && a_bot > b_top
+            && a_top > b_bot){
                 return true;
             }
-        }
         return false;
     }
 
