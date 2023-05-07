@@ -12,8 +12,8 @@ public class GameManager {
     private MKeyListener input;
 
     public GameManager() {
-        this.player = new Personaje(1, 5, 15, 5);
-        this.npc = new Personaje(10, 0, 5, 15);
+        this.player = new Personaje(9, 0, 6, 6);
+        this.npc = new Personaje(4, 0, 4, 4);
 
         this.g = new Graphics(60, 15);
         this.input = new MKeyListener();
@@ -39,27 +39,20 @@ public class GameManager {
             this.input.code = -1;
             if (checkCollision(player, npc)) {
                 System.out.println("Te has chocado con un npc!");
+                System.exit(0);
             }
         }
     }
 
     private boolean areaCheck(Box a_box, Box b_box) {
-        int a_izq = a_box.coords[0].x;
-        int a_der = a_box.coords[1].x;
-        int a_top = a_box.coords[0].y;
-        int a_bot = a_box.coords[1].y;
-
-        int b_izq = b_box.coords[0].x;
-        int b_der = b_box.coords[1].x;
-        int b_top = b_box.coords[0].y;
-        int b_bot = b_box.coords[1].y;
-
-        if(    b_der > a_izq
-            && a_der > b_izq
-            && a_bot > b_top
-            && a_top > b_bot){
+        for(int i = 0; i < 4; i++){
+            if(b_box.coords[i].x >= a_box.coords[0].x && 
+                b_box.coords[i].x <= a_box.coords[3].x &&
+                  b_box.coords[i].y >= a_box.coords[0].y && 
+                    b_box.coords[i].y <= a_box.coords[3].y){
                 return true;
             }
+        }
         return false;
     }
 

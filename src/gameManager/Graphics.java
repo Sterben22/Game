@@ -25,7 +25,7 @@ public class Graphics {
         char[] aux = this.buffer.toCharArray();
         for(int i = 0; i < p.getWidth(); i++){
             for(int j = 0; j < p.getHeight(); j++){
-                aux[(p.getX() + i) + (p.getY() + j) * (this.width + 1)] = '@'; 
+                aux[(p.getX() + i) + (p.getY() + j) * (this.width + 1)] = '/'; 
             }
         }
         this.buffer = String.copyValueOf(aux);
