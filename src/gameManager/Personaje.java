@@ -22,7 +22,6 @@ public class Personaje {
             default: return false;
         }
         return true;
-        //System.out.println("Te has movido a la posición x:" + (this.x + this.width)/2 + " y:" + (this.y + this.height)/2);
     }
     
     public Box getBoundingBox(){

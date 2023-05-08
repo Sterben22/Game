@@ -12,8 +12,8 @@ public class GameManager {
     private MKeyListener input;
 
     public GameManager() {
-        this.player = new Personaje(0, 0, 6, 6);
-        this.npc = new Personaje(10, 0, 4, 4);
+        this.player = new Personaje(1, 5, 15, 5);
+        this.npc = new Personaje(10, 0, 5, 15);
 
         this.g = new Graphics(60, 15);
         this.input = new MKeyListener();
@@ -52,7 +52,7 @@ public class GameManager {
             && b_box.coords[i].y <= a_box.coords[3].y) {
                 return true;
             }
-            }
+        }
         
         return false;
     }
