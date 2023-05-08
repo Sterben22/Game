@@ -1,6 +1,6 @@
 package gameManager;
 
-
+import java.awt.Rectangle;
 import javax.swing.*;
 
 public class GameManager {
@@ -58,16 +58,10 @@ public class GameManager {
     }
 
     private boolean checkCollision(Personaje a, Personaje b) {
-        Box a_box = a.getBoundingBox();
-        Box b_box = b.getBoundingBox();
+        Rectangle aRect = new Rectangle(a.getX(), a.getY(), a.getWidth(), a.getHeight());
+        Rectangle bRect = new Rectangle(b.getX(), b.getY(), b.getWidth(), b.getHeight());
 
-        boolean result;
-        result = areaCheck(a_box, b_box);
-        if (result) {
-            return result;
-        }
-        result = areaCheck(b_box, a_box);
-        return result;
+        return aRect.intersects(bRect);
     }
 }
 
