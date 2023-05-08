@@ -44,19 +44,6 @@ public class GameManager {
         }
     }
 
-    private boolean areaCheck(Box a_box, Box b_box) {
-        for (int i = 0; i < 4; i++) {
-            if (b_box.coords[i].x >= a_box.coords[0].x
-            && b_box.coords[i].x <= a_box.coords[3].x
-            && b_box.coords[i].y >= a_box.coords[0].y
-            && b_box.coords[i].y <= a_box.coords[3].y) {
-                return true;
-            }
-        }
-        
-        return false;
-    }
-
     private boolean checkCollision(Personaje a, Personaje b) {
         Rectangle aRect = new Rectangle(a.getX(), a.getY(), a.getWidth(), a.getHeight());
         Rectangle bRect = new Rectangle(b.getX(), b.getY(), b.getWidth(), b.getHeight());
