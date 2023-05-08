@@ -17,6 +17,7 @@ public class GameManager {
 
         this.g = new Graphics(60, 15);
         this.input = new MKeyListener();
+        
         JTextField textField = new JTextField();
         textField.addKeyListener(this.input);
         JFrame jframe = new JFrame();
@@ -31,7 +32,9 @@ public class GameManager {
         Personaje[] temp = new Personaje[2];
         temp[0] = this.player;
         temp[1] = this.npc;
+        
         this.g.print(temp);
+        
         while (true) {
             if(this.player.move(this.input.code)){
                 this.g.print(temp);
@@ -47,19 +50,18 @@ public class GameManager {
     private boolean areaCheck(Box a_box, Box b_box) {
         for (int i = 0; i < 4; i++) {
             if (b_box.coords[i].x >= a_box.coords[0].x
-            && b_box.coords[i].x <= a_box.coords[3].x
-            && b_box.coords[i].y >= a_box.coords[0].y
-            && b_box.coords[i].y <= a_box.coords[3].y) {
+                && b_box.coords[i].x <= a_box.coords[3].x
+                && b_box.coords[i].y >= a_box.coords[0].y
+                && b_box.coords[i].y <= a_box.coords[3].y) {
                 return true;
             }
         }
-        
         return false;
     }
 
     private boolean checkCollision(Personaje a, Personaje b) {
-        Box a_box = a.getBoundingBox();
-        Box b_box = b.getBoundingBox();
+        Box a_box = new Box(a.getX(), a.getY(), a.getWidth(), a.getHeight());
+        Box b_box = new Box(b.getX(), b.getY(), b.getWidth(), b.getHeight());
 
         boolean result;
         result = areaCheck(a_box, b_box);
