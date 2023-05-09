@@ -54,17 +54,11 @@ public class GameManager {
                 return true;
             }
         }*/
-        int A_iz  = a_box.coords[0].x; //x
-        int A_der = a_box.coords[3].x; //x+w
-        int A_top = a_box.coords[0].y; //y
-        int A_bot = a_box.coords[3].y; //y+h
 
-        int B_iz  = b_box.coords[0].x; //x
-        int B_der = b_box.coords[3].x; //x+w
-        int B_top = b_box.coords[0].y; //y
-        int B_bot = b_box.coords[3].y; //y+h
-
-        if(B_der > A_iz && A_der > B_iz && A_bot > B_top && A_top < B_bot){
+        if(b_box.coords[3].x > a_box.coords[0].x 
+        && a_box.coords[3].x > b_box.coords[0].x 
+        && a_box.coords[3].y > b_box.coords[0].y 
+        && a_box.coords[0].y < b_box.coords[3].y){
             return true;
         }
 
