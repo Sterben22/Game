@@ -72,8 +72,8 @@ public class GameManager {
     }
 
     private boolean checkCollision(Personaje a, Personaje b) {
-        Box a_box = new Box(a.getX(), a.getY(), a.getWidth(), a.getHeight());
-        Box b_box = new Box(b.getX(), b.getY(), b.getWidth(), b.getHeight());
+        Box a_box = a.getBoundingBox();
+        Box b_box = b.getBoundingBox();
 
         boolean result;
         result = areaCheck(a_box, b_box);
@@ -82,6 +82,7 @@ public class GameManager {
         }
         result = areaCheck(b_box, a_box);
         return result;
+    
     }
 }
 
