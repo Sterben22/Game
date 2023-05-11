@@ -19,6 +19,11 @@ public class Personaje {
             case 37: this.x -= 1; break;
             case 40: this.y += 1; break;
             case 39: this.x += 1; break;
+            
+            case 87: this.y -= 1; break;
+            case 65: this.x -= 1; break;
+            case 83: this.y += 1; break;
+            case 68: this.x += 1; break;
             default: return false;
         }
         return true;

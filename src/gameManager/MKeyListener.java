@@ -7,5 +7,6 @@ public class MKeyListener extends KeyAdapter {
     @Override
     public void keyPressed(KeyEvent event) {
         this.code = event.getKeyCode();
+        
     }
 }
