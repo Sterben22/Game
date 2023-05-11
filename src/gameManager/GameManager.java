@@ -12,7 +12,7 @@ public class GameManager {
     private MKeyListener input;
 
     public GameManager() {
-        this.player = new Personaje(6, 5, 15, 5);
+        this.player = new Personaje(17, 5, 15, 5);
         this.npc = new Personaje(10, 0, 5, 15);
 
         this.g = new Graphics(60, 15);
@@ -66,7 +66,12 @@ public class GameManager {
     }
 
     private boolean checkCollision(Personaje p1, Personaje p2) {
-        boolean result = areaCheck(p1, p2);
+        boolean result;
+        result = areaCheck(p1, p2);
+        if (result) {
+            return result;
+        }
+        result = areaCheck(p2, p1);
         return result;
     }
 }
