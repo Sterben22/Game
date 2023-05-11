@@ -1,6 +1,6 @@
 package gameManager;
 
-import java.awt.Rectangle;
+
 import javax.swing.*;
 
 public class GameManager {
@@ -12,7 +12,7 @@ public class GameManager {
     private MKeyListener input;
 
     public GameManager() {
-        this.player = new Personaje(3, 5, 15, 5);
+        this.player = new Personaje(17, 5, 15, 5);
         this.npc = new Personaje(10, 0, 5, 15);
 
         this.g = new Graphics(60, 15);
@@ -44,23 +44,29 @@ public class GameManager {
         }
     }
     
-    private boolean areaCheck(Box a_box, Box b_box) {
-        Rectangle aRect = new Rectangle(a_box.coords[0].x,a_box.coords[0].y , a_box.getWidth(), a_box.getHeight());
-        Rectangle bRect = new Rectangle(b_box.coords[0].x,b_box.coords[0].y , b_box.getWidth(), b_box.getHeight());
+    private boolean areaCheck(Personaje p1, Personaje p2) {
+        boolean temp=false;
+        int[] a = new int[2]; int[] b = new int[2];
 
-        return aRect.intersects(bRect);
+        int x1 = p1.getX(); int x1_w = p1.getX()+p1.getWidth();
+        int x2 = p2.getX(); int x2_w = p2.getX()+p2.getWidth();
+
+        int y1 = p1.getY(); int y1_h = p1.getY()+p1.getHeight();
+        int y2 = p2.getY(); int y2_h = p2.getY()+p2.getHeight();
+
+        if(x1 >= x2){a[0]=x1;}else{a[0]=x2;}  //max
+        if(x1_w >= x2_w){a[1]=x2_w;}else{a[1]=x1_w;}  //min
+        
+        if(y1 >= y2){b[0]=y1;}else{b[0]=y2;}  //max
+        if(y1_h >= y2_h){a[1]=y2_h;}else{b[1]=y1_h;}  //min
+
+        if(a[1] > a[0] && b[1] > b[0]){ temp = true;}
+       
+        return temp;
     }
 
-    private boolean checkCollision(Personaje a, Personaje b) {
-        Box a_box = a.getBoundingBox();
-        Box b_box = b.getBoundingBox();
-
-        boolean result;
-        result = areaCheck(a_box, b_box);
-        if (result) {
-            return result;
-        }
-        result = areaCheck(b_box, a_box);
+    private boolean checkCollision(Personaje p1, Personaje p2) {
+        boolean result = areaCheck(p1, p2);
         return result;
     }
 }
